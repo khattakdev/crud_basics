@@ -37,9 +37,9 @@ namespace crud_basics
             this.searchBtn = new System.Windows.Forms.Button();
             this.updateBtn = new System.Windows.Forms.Button();
             this.deleteBtn = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.recordGrid = new System.Windows.Forms.DataGridView();
             this.viewBtn = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.recordGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // addBtn
@@ -94,6 +94,7 @@ namespace crud_basics
             this.searchBtn.TabIndex = 5;
             this.searchBtn.Text = "Search";
             this.searchBtn.UseVisualStyleBackColor = true;
+            this.searchBtn.Click += new System.EventHandler(this.searchBtn_Click);
             // 
             // updateBtn
             // 
@@ -103,6 +104,7 @@ namespace crud_basics
             this.updateBtn.TabIndex = 6;
             this.updateBtn.Text = "Update";
             this.updateBtn.UseVisualStyleBackColor = true;
+            this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click);
             // 
             // deleteBtn
             // 
@@ -112,15 +114,16 @@ namespace crud_basics
             this.deleteBtn.TabIndex = 7;
             this.deleteBtn.Text = "Delete";
             this.deleteBtn.UseVisualStyleBackColor = true;
+            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
             // 
-            // dataGridView1
+            // recordGrid
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(14, 211);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(373, 162);
-            this.dataGridView1.TabIndex = 8;
+            this.recordGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.recordGrid.Location = new System.Drawing.Point(14, 211);
+            this.recordGrid.Name = "recordGrid";
+            this.recordGrid.RowTemplate.Height = 25;
+            this.recordGrid.Size = new System.Drawing.Size(434, 162);
+            this.recordGrid.TabIndex = 8;
             // 
             // viewBtn
             // 
@@ -130,14 +133,15 @@ namespace crud_basics
             this.viewBtn.TabIndex = 9;
             this.viewBtn.Text = "View";
             this.viewBtn.UseVisualStyleBackColor = true;
+            this.viewBtn.Click += new System.EventHandler(this.viewBtn_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(399, 450);
+            this.ClientSize = new System.Drawing.Size(469, 450);
             this.Controls.Add(this.viewBtn);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.recordGrid);
             this.Controls.Add(this.deleteBtn);
             this.Controls.Add(this.updateBtn);
             this.Controls.Add(this.searchBtn);
@@ -148,7 +152,7 @@ namespace crud_basics
             this.Controls.Add(this.addBtn);
             this.Name = "Form1";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.recordGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -164,7 +168,7 @@ namespace crud_basics
         private System.Windows.Forms.Button searchBtn;
         private System.Windows.Forms.Button updateBtn;
         private System.Windows.Forms.Button deleteBtn;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView recordGrid;
         private System.Windows.Forms.Button viewBtn;
     }
 }
