@@ -12,6 +12,10 @@ namespace crud_basics
         private SqlConnection sqlCon;
         private SqlCommand sqlCmd;
         private SqlDataAdapter sqlAdapter;
+        public DBCon()
+        {
+            sqlCon = new SqlConnection("Data Source=DESKTOP-URS2I8O;Initial Catalog=crud;Integrated Security=True");
+        }
         public DBCon(string conn)
         {
             sqlCon = new SqlConnection(conn);

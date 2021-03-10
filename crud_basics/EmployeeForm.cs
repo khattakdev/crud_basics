@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace crud_basics
 {
-    public partial class Form1 : Form
+    public partial class EmployeeForm : Form
     {
 
-        DBCon conn = new DBCon("Data Source=DESKTOP-URS2I8O;Initial Catalog=crud;Integrated Security=True");
-        public Form1()
+        DBCon conn = new DBCon();
+        public EmployeeForm()
         {
             InitializeComponent();
         }
@@ -40,9 +40,9 @@ namespace crud_basics
         private void searchBtn_Click(object sender, EventArgs e)
         {
 
-            string name = nameInput.Text;
+            string id = idInput.Text;
 
-            DataTable dt = conn.Search("SELECT * FROM EMPLOYEES WHERE NAME='" + name + "'");
+            DataTable dt = conn.Search("SELECT * FROM EMPLOYEES WHERE ID='" + id + "'");
 
             if (dt != null)
             {
@@ -68,9 +68,10 @@ namespace crud_basics
 
         private void updateBtn_Click(object sender, EventArgs e)
         {
+            string id = idInput.Text;
             string name = nameInput.Text;
             string email = emailInput.Text;
-            if (conn.UDI("UPDATE EMPLOYEES SET EMAIL='" + email + "' WHERE NAME='" + name + "'"))
+            if (conn.UDI("UPDATE EMPLOYEES SET EMAIL='" + email + "', NAME='" + name + "' WHERE ID='" + id + "'"))
             {
                 MessageBox.Show("Record Added!");
             }
@@ -84,8 +85,9 @@ namespace crud_basics
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-            string name = nameInput.Text;
-            if (conn.UDI("DELETE FROM EMPLOYEES WHERE NAME = '" + name + "'"))
+
+            string id = idInput.Text;
+            if (conn.UDI("DELETE FROM EMPLOYEES WHERE ID = '" + id + "'"))
             {
                 MessageBox.Show("Record Deleted!");
             }
@@ -94,6 +96,13 @@ namespace crud_basics
                 MessageBox.Show("Unable to Delete Record!");
 
             }
+        }
+
+        private void productsLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Hide();
+            ProductForm prodForm = new ProductForm();
+            prodForm.Show();
         }
     }
 }
