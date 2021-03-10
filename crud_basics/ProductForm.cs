@@ -95,5 +95,12 @@ namespace crud_basics
             EmployeeForm empForm = new EmployeeForm();
             empForm.Show();
         }
+
+        private void supplierLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Hide();
+            SupplierForm supForm = new SupplierForm();
+            supForm.Show();
+        }
     }
 }

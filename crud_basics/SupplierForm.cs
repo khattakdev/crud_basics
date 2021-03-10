@@ -2,20 +2,16 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace crud_basics
 {
-    public partial class EmployeeForm : Form
+    public partial class SupplierForm : Form
     {
-
         DBCon conn = new DBCon();
-        public EmployeeForm()
+        public SupplierForm()
         {
             InitializeComponent();
         }
@@ -24,7 +20,8 @@ namespace crud_basics
         {
             string name = nameInput.Text;
             string email = emailInput.Text;
-            if (conn.UDI("INSERT INTO EMPLOYEES (NAME, EMAIL) VALUES('" + name + "','" + email + "')"))
+            string item = itemInput.Text;
+            if (conn.UDI("INSERT INTO SUPPLIERS (NAME, EMAIL, ITEM) VALUES('" + name + "','" + email + "','" + item + "')"))
             {
                 MessageBox.Show("Record Added!");
             }
@@ -33,37 +30,25 @@ namespace crud_basics
                 MessageBox.Show("Unable to Add Record!");
 
             }
-
-
         }
 
         private void searchBtn_Click(object sender, EventArgs e)
         {
-
             string id = idInput.Text;
 
-            DataTable dt = conn.Search("SELECT * FROM EMPLOYEES WHERE ID='" + id + "'");
+            DataTable dt = conn.Search("SELECT * FROM SUPPLIERS WHERE ID='" + id + "'");
 
             if (dt != null)
             {
 
                 nameInput.Text = dt.Rows[0]["Name"].ToString();
                 emailInput.Text = dt.Rows[0]["Email"].ToString();
+                itemInput.Text = dt.Rows[0]["Item"].ToString();
             }
             else
             {
                 MessageBox.Show("Record not found.");
             }
-
-        }
-
-        private void viewBtn_Click(object sender, EventArgs e)
-        {
-            
-            DataSet ds = conn.View("SELECT * FROM EMPLOYEES");
-
-            recordGrid.DataSource = ds.Tables[0].DefaultView;
-
         }
 
         private void updateBtn_Click(object sender, EventArgs e)
@@ -71,7 +56,8 @@ namespace crud_basics
             string id = idInput.Text;
             string name = nameInput.Text;
             string email = emailInput.Text;
-            if (conn.UDI("UPDATE EMPLOYEES SET EMAIL='" + email + "', NAME='" + name + "' WHERE ID='" + id + "'"))
+            string item = itemInput.Text;
+            if (conn.UDI("UPDATE SUPPLIERS SET EMAIL='" + email + "', NAME='" + name + "', ITEM='" + item + "' WHERE ID='" + id + "'"))
             {
                 MessageBox.Show("Record Added!");
             }
@@ -83,11 +69,17 @@ namespace crud_basics
 
         }
 
+        private void viewBtn_Click(object sender, EventArgs e)
+        {
+            DataSet ds = conn.View("SELECT * FROM SUPPLIERS");
+
+            recordGrid.DataSource = ds.Tables[0].DefaultView;
+        }
+
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-
             string id = idInput.Text;
-            if (conn.UDI("DELETE FROM EMPLOYEES WHERE ID = '" + id + "'"))
+            if (conn.UDI("DELETE FROM SUPPLIERS WHERE ID = '" + id + "'"))
             {
                 MessageBox.Show("Record Deleted!");
             }
@@ -96,20 +88,21 @@ namespace crud_basics
                 MessageBox.Show("Unable to Delete Record!");
 
             }
+
         }
 
-        private void productsLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void productLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.Hide();
             ProductForm prodForm = new ProductForm();
             prodForm.Show();
         }
 
-        private void supplierLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void employeesLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.Hide();
-            SupplierForm supForm = new SupplierForm();
-            supForm.Show();
+            EmployeeForm empForm = new EmployeeForm();
+            empForm.Show();
         }
     }
 }

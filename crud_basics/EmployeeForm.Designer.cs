@@ -165,6 +165,7 @@ namespace crud_basics
             this.supplierLabel.TabIndex = 28;
             this.supplierLabel.TabStop = true;
             this.supplierLabel.Text = "Supplier";
+            this.supplierLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.supplierLabel_LinkClicked);
             // 
             // productsLink
             // 
@@ -177,7 +178,7 @@ namespace crud_basics
             this.productsLink.Text = "Products";
             this.productsLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.productsLink_LinkClicked);
             // 
-            // Form1
+            // EmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -196,7 +197,7 @@ namespace crud_basics
             this.Controls.Add(this.emailInput);
             this.Controls.Add(this.nameInput);
             this.Controls.Add(this.addBtn);
-            this.Name = "Form1";
+            this.Name = "EmployeeForm";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.recordGrid)).EndInit();
             this.ResumeLayout(false);

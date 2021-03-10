@@ -195,6 +195,7 @@ namespace crud_basics
             this.supplierLabel.TabIndex = 26;
             this.supplierLabel.TabStop = true;
             this.supplierLabel.Text = "Supplier";
+            this.supplierLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.supplierLabel_LinkClicked);
             // 
             // ProductForm
             // 
