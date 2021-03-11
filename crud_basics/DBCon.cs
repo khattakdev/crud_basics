@@ -61,23 +61,5 @@ namespace crud_basics
             }
         }
 
-        public DataSet View(string query)
-        {
-            sqlCon.Open();
-            sqlAdapter = new SqlDataAdapter(query, sqlCon);
-            DataSet ds = new DataSet();
-
-            sqlAdapter.Fill(ds, "Employees");
-            sqlCon.Close();
-
-            if (ds != null)
-            {
-                return ds;
-            }
-            else
-            {
-                return null;
-            }
-        }
     }
 }

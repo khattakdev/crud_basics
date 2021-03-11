@@ -199,6 +199,7 @@ namespace crud_basics
             this.Controls.Add(this.addBtn);
             this.Name = "EmployeeForm";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.EmployeeForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.recordGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

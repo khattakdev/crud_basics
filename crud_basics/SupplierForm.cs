@@ -71,9 +71,9 @@ namespace crud_basics
 
         private void viewBtn_Click(object sender, EventArgs e)
         {
-            DataSet ds = conn.View("SELECT * FROM SUPPLIERS");
+            DataTable dt = conn.Search("SELECT * FROM SUPPLIERS");
 
-            recordGrid.DataSource = ds.Tables[0].DefaultView;
+            recordGrid.DataSource = dt;
         }
 
         private void deleteBtn_Click(object sender, EventArgs e)

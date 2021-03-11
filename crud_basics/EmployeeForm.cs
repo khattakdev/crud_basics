@@ -60,9 +60,9 @@ namespace crud_basics
         private void viewBtn_Click(object sender, EventArgs e)
         {
             
-            DataSet ds = conn.View("SELECT * FROM EMPLOYEES");
+            DataTable dt = conn.Search("SELECT * FROM EMPLOYEES");
 
-            recordGrid.DataSource = ds.Tables[0].DefaultView;
+            recordGrid.DataSource = dt;
 
         }
 
@@ -110,6 +110,11 @@ namespace crud_basics
             this.Hide();
             SupplierForm supForm = new SupplierForm();
             supForm.Show();
+        }
+
+        private void EmployeeForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
